@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #5a5a6b;
+    --bg-secondary: #141418;
+    --bg-tertiary: #777777;
+    --transition-speed: 600ms;
+    --search-bar-height: 48px;
+    --send-message-height: 70px;
+    --nav-panel-min-height: 570px;
+}
+  
+body {
+  color: black;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+app-chat {
+  flex: 1;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lens {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-svg {
+  width: 24px;
+  height: 24px;
+}

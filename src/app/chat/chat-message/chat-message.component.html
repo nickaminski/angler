@@ -1,0 +1,7 @@
+<div class="chat-record" [class.my-record]="message.userId===selectedUserId">
+    <div class="chat-header">
+        <div class="chat-username" *ngIf="message.userId!==selectedUserId">{{message.username}}</div>
+        <div class="chat-timestamp">{{message.timestamp | date:'M/d h:mm a'}}</div>
+    </div>
+    <div class="chat-message">{{message.message}}</div>
+</div>

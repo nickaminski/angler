@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-flow: column;
+    width: 68px;
+    height: 100%;
+}
+
+.nav-list {
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+    position: relative;
+}
+
+.shadow {
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+    box-shadow: inset -8px 0px 11px -15px black;
+}
+
+.left-right {
+    height: 58px;
+}
+
+.nav-tile {
+    width: 68px;
+    height: 58px;
+    flex-flow: column;
+}
+
+.tile-text {
+    font-size: 10px;
+
+}
+
+.available {
+    color: rgb(0, 82, 177);
+    cursor: pointer;
+}
+
+.available:hover {
+    background-color: var(--text-primary);
+}

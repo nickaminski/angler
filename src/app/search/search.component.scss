@@ -1,0 +1,87 @@
+.container {
+    height: 48px;
+    display: flex;
+}
+
+.search-container {
+    flex: 1;
+    margin-left: 24px;
+}
+
+.search-container input {
+    width: 100%;
+}
+
+.user-buttons {
+    flex-flow: row;
+    margin-left: 40px;
+}
+
+.user-menu {
+    width: 48px;
+    height: 48px;
+}
+
+.user-menu div {
+    width: 32px;
+    height: 32px;
+}
+
+.settings {
+    width: 34px;
+    height: 48px;
+}
+
+.search-input {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    flex: 1;
+    background-color: var(--text-primary);
+    border-radius: 6px;
+}
+
+.search-input > input {
+    border: none;
+    color: inherit;
+    background-color: inherit;
+    font-size: 18px;
+    font-weight: inherit;
+    width: 100%;
+    margin: 0 5px;
+}
+
+.search-icon {
+    margin-left: 9px;
+}
+
+// 1031px and up
+@media (min-width: 1031px) {
+    .search-container {
+        margin-left: 280px;
+    }
+
+    .user-buttons {
+        margin-left: 129px;
+    }
+}
+
+@media (min-width: 1310px) {
+    .search-container {
+        margin-left: 320px;
+    }
+
+    .user-buttons {
+        margin-left: 169px;
+    }
+}
+
+@media (min-width: 1493px) {
+    .search-container {
+        margin-left: 360px;
+    }
+
+    .user-buttons {
+        margin-left: 209px;
+    }
+}
