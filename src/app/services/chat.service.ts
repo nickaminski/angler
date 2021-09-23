@@ -92,17 +92,6 @@ export class ChatService {
     return this.setUpChannelsSubject.getValue();
   }
 
-  /*
-  public leaveChannel(channelName: string) {
-    this.hubConnection.invoke('leaveChannel', channelName)
-                      .then((response : boolean) => {
-                          this.logger.log(`left channel with success of: ${response}`);
-                        }
-                      )
-                      .catch(err => this.logger.log(`Error when leaving channel: ${err}`))
-  }
-  */
-
   public listenForMessages() {
     this.hubConnection.on('broadcastToChannel', (chatPacket : ChatPacket) => {
       this.messageSubject.next(chatPacket);

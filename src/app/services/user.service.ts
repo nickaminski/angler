@@ -34,7 +34,6 @@ export class UserService {
   }
 
   public createNewUserProfile(username: string): Observable<UserProfile> {
-    console.log(this.localStorageService.getValue('user-id'));
     if (this.localStorageService.getValue('user-id')){
       return this.onGetUser$;
     } 
