@@ -41,16 +41,7 @@ export class CreateUserComponent implements OnInit, OnDestroy {
     if (this.isValidInput()) {
       this.userService.createNewUserProfile(this.username).subscribe(response => {
         if (response) {
-          this.chatService.startConnection();
-          this.chatService.ConnectedObservable.subscribe(connected => {
-            if (connected) {
-              if (connected && response){
-                this.chatService.setUpChannels(response.userId);
-                this.chatService.listenForMessages();
-                this.router.navigate(['chat']);
-              }
-            }
-          });
+          this.router.navigate(['chat']);
         }
       });
     }
