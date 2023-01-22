@@ -17,7 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.userSub = this.userService.onGetUser$.subscribe(profile => {
       if (profile) {
         this.chatService.startConnection();
-        this.chatSub = this.chatService.ConnectedObservable.subscribe(connected => {
+        this.chatSub = this.chatService.$Connected.subscribe(connected => {
           if (connected && profile) {
             this.chatService.setUpChannels(profile.userId);
             this.chatService.listenForMessages();

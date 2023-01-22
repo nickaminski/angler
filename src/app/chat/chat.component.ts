@@ -29,11 +29,11 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.lockScrollbar = true;
     this.initialized = this.chatService.isInitialized();
 
-    this.setupSub = this.chatService.setUpChannelsObservable.subscribe(inits => {
+    this.setupSub = this.chatService.$setUpChannels.subscribe(inits => {
       this.initialized = inits;
     });
 
-    this.messageSub = this.chatService.MessageObservable.subscribe(message => {
+    this.messageSub = this.chatService.$messageReceived.subscribe(message => {
       if (this.lockScrollbar) {
         try{
           setTimeout(() => {

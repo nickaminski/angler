@@ -13,18 +13,18 @@ export class ChatService {
   private hubConnection: HubConnection;
 
   public setUpChannelsSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public setUpChannelsObservable: Observable<boolean>;
+  public $setUpChannels: Observable<boolean>;
 
   private connectedSubject: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
-  public ConnectedObservable: Observable<boolean>;
+  public $Connected: Observable<boolean>;
 
   public Connecting: boolean;
 
   private joinSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public JoinObservable: Observable<boolean>;
+  public $Join: Observable<boolean>;
 
   private messageSubject: BehaviorSubject<ChatPacket> = new BehaviorSubject<ChatPacket>(null);
-  public MessageObservable: Observable<ChatPacket>;
+  public $messageReceived: Observable<ChatPacket>;
 
   public CurrentChatRoom: string;
 
@@ -46,10 +46,10 @@ export class ChatService {
   };
 
   constructor(private logger: LoggerService, private guidService: GuidService) {
-    this.ConnectedObservable = this.connectedSubject.asObservable();
-    this.MessageObservable = this.messageSubject.asObservable();
-    this.JoinObservable = this.joinSubject.asObservable();
-    this.setUpChannelsObservable = this.setUpChannelsSubject.asObservable();
+    this.$Connected = this.connectedSubject.asObservable();
+    this.$messageReceived = this.messageSubject.asObservable();
+    this.$Join = this.joinSubject.asObservable();
+    this.$setUpChannels = this.setUpChannelsSubject.asObservable();
     this.hubConnection = new HubConnectionBuilder().withUrl(hub_Url).build();
 
     this.CurrentChatRoom = 'public';

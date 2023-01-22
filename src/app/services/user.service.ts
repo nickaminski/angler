@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap, retry, delay } from 'rxjs/operators';
 import { api_url } from 'src/environments/environment';
-import { GuidService } from './guid.service';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -16,7 +15,7 @@ export class UserService {
   public onGetUser$: Observable<UserProfile>;
   private userBehaviorSubject: BehaviorSubject<UserProfile>;
 
-  constructor(private httpClient: HttpClient, private guidService: GuidService, private localStorageService: LocalStorageService) {
+  constructor(private httpClient: HttpClient, private localStorageService: LocalStorageService) {
     this.userBehaviorSubject = new BehaviorSubject<UserProfile>(null);
     this.onGetUser$ = this.userBehaviorSubject.asObservable();
     if (this.localStorageService.getValue('user-id')) {
