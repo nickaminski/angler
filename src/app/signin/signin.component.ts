@@ -6,11 +6,11 @@ import { ChatService } from '../services/chat.service';
 import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.scss']
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss']
 })
-export class CreateUserComponent implements OnInit, OnDestroy {
+export class SigninComponent implements OnInit, OnDestroy {
 
   constructor(private userService: UserService, private chatService: ChatService, private router: Router) { }
 
@@ -34,16 +34,16 @@ export class CreateUserComponent implements OnInit, OnDestroy {
 
   checkInput(event) {
     if(event.key === 'Enter') {
-      this.create();
+      this.signin();
     }
   }
 
-  create() {
+  signin() {
     if (this.isValidInput()) {
-      this.userService.createNewUserProfile(this.username).subscribe(response => {
+      this.userService.signin(this.username).subscribe(response => {
         if (response instanceof HttpErrorResponse)
         {
-          if (response.status == 400)
+          if (response.status == 404)
           {
             console.log(response.error);
           }
@@ -57,8 +57,7 @@ export class CreateUserComponent implements OnInit, OnDestroy {
 
   isValidInput() {
     return this.username && 
-           this.username.length > 0 &&
-           this.username.length <= 25;
+           this.username.length > 0;
   }
 
 }

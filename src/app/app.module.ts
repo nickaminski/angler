@@ -11,6 +11,7 @@ import { ChatMessageComponent } from './chat/chat-message/chat-message.component
 import { SearchComponent } from './search/search.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
     NavbarComponent,
     ChatMessageComponent,
     SearchComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,

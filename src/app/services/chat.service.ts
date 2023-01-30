@@ -12,7 +12,7 @@ export class ChatService {
 
   private hubConnection: HubConnection;
 
-  public setUpChannelsSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private setUpChannelsSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public $setUpChannels: Observable<boolean>;
 
   private connectedSubject: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);

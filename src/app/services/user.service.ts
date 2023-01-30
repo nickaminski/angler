@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { tap, retry, delay } from 'rxjs/operators';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { tap, retry, catchError } from 'rxjs/operators';
 import { api_url } from 'src/environments/environment';
 import { LocalStorageService } from './local-storage.service';
 
@@ -20,12 +20,31 @@ export class UserService {
     this.onGetUser$ = this.userBehaviorSubject.asObservable();
     if (this.localStorageService.getValue('user-id')) {
       this.httpClient.get<UserProfile>(`${this.apiPath}?id=${this.localStorageService.getValue('user-id')}`).pipe(
-        retry({count: 5, delay: delay(2000)}),
+        retry({count: 5, delay: 2000}),
+        catchError(err => {
+          this.localStorageService.deleteValue('user-id');
+          return of(null);
+        })
       ).subscribe(user => {
         if (user) {
           this.userBehaviorSubject.next(user);
         }
       });
+    }
+  }
+
+  public signin(username: string): Observable<UserProfile> {
+    if (this.localStorageService.getValue('user-id')){
+      return this.onGetUser$;
+    } 
+    else {
+      return this.httpClient.get<UserProfile>(`${this.apiPath}?username=${username}`)
+                            .pipe(
+                              tap(x => {
+                                this.localStorageService.setValue('user-id', x.userId);
+                                this.userBehaviorSubject.next(x);
+                              })
+                            );
     }
   }
 

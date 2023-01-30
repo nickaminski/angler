@@ -1,6 +1,6 @@
 <div class="background">
     <div class="card">
-        <h1>Signin</h1>
+        <h1 style="color: #8e44ad">Create Identity</h1>
         <div class="content">
             <div class="txt_field">
                 <input type="text" required [(ngModel)]="username" (keyup)="checkInput($event)" maxlength="25" />
@@ -8,7 +8,7 @@
                 <label>Username</label>
                 <div class="letter-count">{{username.length}}/25</div>
             </div>
-            <button (click)="signin()" [disabled]="!isValidInput()">Signin</button>
+            <button (click)="create()" [disabled]="!isValidInput()">Create</button>
         </div>
     </div>
 </div>
