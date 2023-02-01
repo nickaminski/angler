@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
 import { tap, retry, catchError } from 'rxjs/operators';
 import { api_url } from 'src/environments/environment';
 import { LocalStorageService } from './local-storage.service';
@@ -38,7 +38,7 @@ export class UserService {
       return this.onGetUser$;
     } 
     else {
-      return this.httpClient.get<UserProfile>(`${this.apiPath}?username=${username}`)
+      return this.httpClient.post<UserProfile>(`${this.apiPath}/signin`, { username: username })
                             .pipe(
                               tap(x => {
                                 this.localStorageService.setValue('user-id', x.userId);

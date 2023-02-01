@@ -15,10 +15,12 @@ export class SigninComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService, private chatService: ChatService, private router: Router) { }
 
   username: string = '';
+  error: string;
 
   userSub: Subscription;
 
   ngOnInit(): void {
+    this.error = '';
     this.userSub = this.userService.onGetUser$.subscribe(user => {
       if (user) {
         this.router.navigate(['chat'], { replaceUrl: true });
@@ -40,16 +42,19 @@ export class SigninComponent implements OnInit, OnDestroy {
 
   signin() {
     if (this.isValidInput()) {
-      this.userService.signin(this.username).subscribe(response => {
-        if (response instanceof HttpErrorResponse)
-        {
-          if (response.status == 404)
+      this.userService.signin(this.username).subscribe({
+        next: userProfile => {
+          if (userProfile) 
+            this.router.navigate(['chat']);
+        },
+        error: err => {
+          if (err instanceof HttpErrorResponse)
           {
-            console.log(response.error);
+            if (err.status == 404)
+            {
+              this.error = 'Bad credentials';
+            }
           }
-        }
-        else if (response) {
-          this.router.navigate(['chat']);
         }
       });
     }

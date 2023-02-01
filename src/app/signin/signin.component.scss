@@ -54,7 +54,7 @@
     span::before {
         content: "";
         position: absolute;
-        top: 40px;
+        top: 25px;
         left: 0;
         width: 0%;
         height: 2px;
@@ -65,7 +65,7 @@
     input {
         width: 100%;
         padding: 0 5px;
-        height: 40px;
+        height: 25px;
         font-size: 16px;
         border: none;
         background: none;
@@ -74,7 +74,7 @@
 
     input:focus ~ label,
     input:valid ~ label {
-        top: -5px;
+        top: -10px;
         color: #2691d9;
     }
 
@@ -92,5 +92,21 @@
         font-size: 16px;
         pointer-events: none;
         transition: .5S;
+    }
+
+    .error-message {
+        position: absolute;
+        font-size: 0.9em;
+        margin-left: 4px;
+        margin-top: 4px;
+        color: red;
+    }
+
+    .letter-count {
+        position: absolute;
+        font-size: 14px;
+        padding-top: 4px;
+        color: silver;
+        right: 0;
     }
 }
