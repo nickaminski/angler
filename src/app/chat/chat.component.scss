@@ -4,13 +4,21 @@
     height: 100%;
 }
 
-.chat-history {
+.chat-history-wrapper {
     background: var(--bg-primary);
+    height: calc(100vh - var(--search-bar-height) - var(--send-message-height));
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.chat-history {
     height: calc(100vh - var(--search-bar-height) - var(--send-message-height));
     overflow: auto;
     display: flex;
     flex-flow: column;
     align-items: center;
+    max-width: 460px;
 }
 
 .input-row {

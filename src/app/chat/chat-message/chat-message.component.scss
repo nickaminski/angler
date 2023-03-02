@@ -1,5 +1,5 @@
 .chat-username {
-    flex: auto;
+    flex: 1;
     margin-right: 1rem;
     max-width: 200px;
 }
@@ -10,6 +10,7 @@
 
 .chat-timestamp {
     width: 130px;
+    text-align: end;
 }
 
 .chat-record {
@@ -18,15 +19,14 @@
     color: var(--text-secondary);
     background: var(--bg-tertiary);
     padding: 5px 10px;
-    margin-left: -180px;
-    margin-top: 8px;
+    margin: 8px 10px;
 }
 
 .my-record {
     background: var(--bg-secondary);
-    margin-left: 180px;
 }
 
 .chat-header {
     display: flex;
+    justify-content: space-between;
 }
