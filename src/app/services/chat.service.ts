@@ -27,25 +27,23 @@ export class ChatService {
   private messageSubject: BehaviorSubject<ChatPacket> = new BehaviorSubject<ChatPacket>(null);
   public $messageReceived: Observable<ChatPacket>;
 
-  private _currentChatRoom: ChatRoomMetaData;
-
+  
   private currentMessagesSubject: BehaviorSubject<ChatPacket[]> = new BehaviorSubject<ChatPacket[]>([]);
   public $currentMessages: Observable<ChatPacket[]>;
-
+  
+  private availableChatRoomsSubject: BehaviorSubject<ChatRoomMetaData[]> = new BehaviorSubject<ChatRoomMetaData[]>([]);
+  public $availableChatRooms: Observable<ChatRoomMetaData[]>;
+  
   get Messages():ChatPacket[][] {
     return this._messages;
   }
-
-  get AvailableChatRooms(): ChatRoomMetaData[] {
-    return this._availableChatRooms;
-  }
-
+  
   get CurrentchatRoom(): ChatRoomMetaData {
     return this._currentChatRoom;
   }
-
+  
   private _messages: ChatPacket[][];
-  private _availableChatRooms: ChatRoomMetaData[];
+  private _currentChatRoom: ChatRoomMetaData;
 
   private getNewServerDisconnectPacket(): ChatPacket {
     return {
@@ -64,13 +62,15 @@ export class ChatService {
     this.$Join = this.joinSubject.asObservable();
     this.$setUpChannels = this.setUpChannelsSubject.asObservable();
     this.$currentMessages = this.currentMessagesSubject.asObservable();
+    this.$availableChatRooms = this.availableChatRoomsSubject.asObservable();
+
     this.hubConnection = new HubConnectionBuilder().withUrl(hub_Url).build();
 
     this._messages = [];
 
     this.getChatRoomList().subscribe(response => {
-      this._availableChatRooms = response;
-      this._currentChatRoom = this._availableChatRooms.find(x => x.name == 'Public' && x.ownerUserId == 'system');
+      this.availableChatRoomsSubject.next(response);
+      this._currentChatRoom = response.find(x => x.name == 'Public' && x.ownerUserId == 'system');
 
       this.getChatRoomChannelHistory(this._currentChatRoom.id).subscribe(response => {
         this._messages[this._currentChatRoom.id] = response;
@@ -118,6 +118,10 @@ export class ChatService {
   public listenForMessages() {
     this.hubConnection.on('broadcastToChannel', (chatPacket : ChatPacket) => {
       this.messageSubject.next(chatPacket);
+      if (!this.Messages[chatPacket.channelId])
+      {
+        this.Messages[chatPacket.channelId] = [];
+      }
       this.Messages[chatPacket.channelId].push(chatPacket);
       this.currentMessagesSubject.next(this.Messages[this._currentChatRoom.id]);
     });

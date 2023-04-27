@@ -1,7 +1,7 @@
 <div class="chat-record" [class.my-record]="message.userId===selectedUserId">
     <div class="chat-header">
         <div class="chat-username">
-            <div *ngIf="message.userId!==selectedUserId">
+            <div>
                 {{message.username}}
             </div>
         </div>
