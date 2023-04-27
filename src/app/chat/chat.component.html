@@ -1,7 +1,7 @@
 <div class="component-container">
     <div class="chat-history-wrapper">
         <div #chatHistory class="chat-history" (scroll)="onScroll($event)">
-            <div *ngFor="let packet of chatService.Messages[currentChatView]">
+            <div *ngFor="let packet of chatService.$currentMessages | async">
                 <app-chat-message [message]="packet" [selectedUserId]="userProfile.userId"></app-chat-message>
             </div>
         </div>

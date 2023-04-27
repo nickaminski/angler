@@ -18,14 +18,11 @@ export class ChatComponent implements OnInit, OnDestroy {
   initialized: boolean;
   userProfile: UserProfile;
 
-  currentChatView: string;
-
   setupSub: Subscription;
   messageSub: Subscription;
   userSub: Subscription;
 
   constructor(public chatService: ChatService, private userService: UserService, private router: Router) {
-    this.currentChatView = 'public';
     this.lockScrollbar = true;
     this.initialized = this.chatService.isInitialized();
 
