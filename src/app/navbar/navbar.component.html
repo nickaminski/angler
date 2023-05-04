@@ -1,11 +1,8 @@
 <div class="container">
     <nav class="nav-list">
-        <a class="center-content nav-tile">
-            <svg class="icon-svg">
-                <use xlink:href="#bell" />
-            </svg>
+        <a *ngFor="let chatRoom of chatService.$availableChatRooms | async" class="center-content nav-tile">
             <div class="tile-text">
-                Activity
+                {{chatRoom.name}}
             </div>
         </a>
     </nav>
