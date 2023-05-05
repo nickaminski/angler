@@ -8,7 +8,7 @@ export class EncodingService {
   constructor() { }
 
   decode(str: string): string {
-    return Buffer.from(str, 'base64').toString('binary');
+    return btoa(str);
   }
 
   encode(str: string): string {
