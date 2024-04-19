@@ -17,14 +17,17 @@
 }
   
 body {
-  color: black;
-  background-color: white;
+  background-color: var(--bg-primary);
   margin: 0;
   padding: 0;
 }
 
 app-chat {
   flex: 1;
+}
+
+app-search {
+  background-color: var(--bg-primary);
 }
 
 .center-content {

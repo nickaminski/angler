@@ -1,25 +1,18 @@
 import { Injectable } from '@angular/core';
-import { EncodingService } from './encoding.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
 
-  constructor(private encodingService: EncodingService) { }
+  constructor() { }
 
   setValue(name: string, val: string) {
-    window.localStorage.setItem(name, this.encodingService.encode(val))
+    window.localStorage.setItem(name, val);
   }
 
   getValue(name: string): string {
-    const val = window.localStorage.getItem(name);
-
-    if (val) {
-      return this.encodingService.decode(val);
-    }
-    
-    return '';
+    return window.localStorage.getItem(name) ?? '';
   }
 
   deleteValue(name: string) {

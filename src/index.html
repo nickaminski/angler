@@ -32,48 +32,36 @@
         justify-content: center;
       }
 
-      h1 {
+      .load-container {
+        display: flex;
+        flex-flow: column;
         color: white;
-        font-size: 2.827em;
         font-weight: normal;
-        padding: 1em 1em 3em;
-        text-align: center;
+        padding: 2em 1em;
+        align-items: center;
       }
 
       .loader {
-        margin: 3.75rem auto;
-        font-size: 0.625rem;
-        position: relative;
-        border: 1.1em solid rgba(255, 255, 255, 0.2);
-        border-left: 1.1em solid white;
-        transform: translateZ(0);
-        animation: loader 1.1s infinite linear;
+        width: 60px;
+        aspect-ratio: 1;
+        --g: conic-gradient(from -90deg at 10px 10px,#fff 90deg,#0000 0);
+        background: var(--g), var(--g), var(--g);
+        background-size: 50% 50%;
+        animation: l16 1.4s infinite;
+      }
+      @keyframes l16 {
+        0%   {background-position:0    0   ,10px 10px,20px 20px} 
+        50%  {background-position:0    20px,10px 10px,20px 0   } 
+        100% {background-position:20px 20px,10px 10px,0    0   } 
       }
 
-      @-webkit-keyframes loader {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      @keyframes loader {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
-      }
     </style>
-    <h1>
+    <div class="load-container">
+      <h1>
+        Loading...
+      </h1>
       <div class="loader"></div>
-      Loading...
-    </h1>
+    </div>
   </app-root>
 </body>
 </html>

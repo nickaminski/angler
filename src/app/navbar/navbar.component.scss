@@ -3,6 +3,7 @@
     flex-flow: column;
     width: 68px;
     height: 100%;
+    background-color: var(--bg-secondary);
 }
 
 .nav-list {
@@ -20,6 +21,7 @@
     width: 68px;
     height: 58px;
     flex-flow: column;
+    color: var(--text-primary)
 }
 
 .tile-text {
