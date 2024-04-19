@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { hub_Url, api_url } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr'
-import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { LoggerService } from './logger.service';
 import { GuidService } from './guid.service';
 

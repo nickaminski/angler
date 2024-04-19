@@ -1,6 +1,7 @@
 .container {
-    height: 36px;
+    height: 38px;
     display: flex;
+    align-items: center;
 }
 
 .search-input {
@@ -11,19 +12,34 @@
     border-radius: 6px;
 }
 
-.search-input > input {
-    border: none;
-    color: inherit;
-    background-color: inherit;
-    font-size: 18px;
-    font-weight: inherit;
-    width: 100%;
-    margin: 0 5px;
+.search-input  {
+    > input {
+        border: none;
+        color: inherit;
+        background-color: inherit;
+        font-size: 18px;
+        font-weight: inherit;
+        width: 100%;
+        margin: 0 5px;
+    }
+
+    > input:focus {
+        outline: none;
+    }
+
+    margin: 0 3px;
 }
 
 .icon {
     width: 32px;
     height: 32px;
+    border: solid 1px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 0 3px;
+    cursor: pointer;
 }
 
 .lens {

@@ -11,6 +11,10 @@
     --send-message-height: 70px;
     --nav-panel-min-height: 570px;
 }
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
   
 body {
   color: black;

@@ -6,7 +6,7 @@ import { LocalStorageService } from './services/local-storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class SigninGuard  {
+export class SigninGuard {
 
   constructor(private router: Router, private localStorageSerive: LocalStorageService) { }
 

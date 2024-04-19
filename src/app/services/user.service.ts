@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 import { tap, retry, catchError } from 'rxjs/operators';
 import { api_url } from 'src/environments/environment';
 import { LocalStorageService } from './local-storage.service';

@@ -1,11 +1,17 @@
 <div class="chat-record" [class.my-record]="message.userId===selectedUserId">
-    <div class="chat-header">
-        <div class="chat-username">
-            <div>
-                {{message.username}}
-            </div>
-        </div>
-        <div class="chat-timestamp">{{message.timestamp | date:'M/d h:mm a'}}</div>
+    <div class="chat-icon">
+        <img *ngIf="message.userId===selectedUserId" src="src/assets/dmgpp.png" />
+        <img *ngIf="message.userId!==selectedUserId" src="src/assets/ippp.png" />
     </div>
-    <div class="chat-message">{{message.message}}</div>
+    <div class="chat-contents">
+        <div class="chat-header">
+            <div class="chat-username">
+                <div>
+                    {{message.username}}
+                </div>
+            </div>
+            <div class="chat-timestamp">{{message.timestamp | date:'M/d h:mm a'}}</div>
+        </div>
+        <div class="chat-message">{{message.message}}</div>
+    </div>
 </div>

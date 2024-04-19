@@ -14,13 +14,27 @@
     color: var(--text-primary);
 }
 
+.chat-icon {
+    > img {
+        border-radius: 50%;
+    }
+
+    display: flex;
+    margin: 0 5px;
+}
+
 .chat-record {
     display: flex;
-    flex-flow: column;
     color: var(--text-secondary);
     background: var(--bg-tertiary);
-    padding: 5px 10px;
+    padding: 8px 5px;
     margin: 8px 10px;
+}
+
+.chat-contents {
+    display: flex;
+    flex-flow: column;
+    margin-left: 5px;
 }
 
 .my-record {

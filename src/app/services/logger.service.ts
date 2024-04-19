@@ -54,19 +54,19 @@ export class LoggerService {
 
     this.inFlight = true;
 
-     return this.http.post(`${api_url}/Logging`, loggerMessage).subscribe({
-       next: (response) =>
-        {
-          this.inFlight = false;
-          if (!response) {
-            this.handleError(loggerMessage, null);
-          } else if (this.messageQueue.length > 0) {
-            this.requestTime = this.initialRequestTime;
-            this.sendMessage(this.getMessageToSend());
-          }
-        },
-        error: (err) => this.handleError(loggerMessage, err)
-     });
+    return this.http.post(`${api_url}/Logging`, loggerMessage).subscribe({
+      next: (response) =>
+       {
+         this.inFlight = false;
+         if (!response) {
+           this.handleError(loggerMessage, null);
+         } else if (this.messageQueue.length > 0) {
+           this.requestTime = this.initialRequestTime;
+           this.sendMessage(this.getMessageToSend());
+         }
+       },
+       error: (err) => this.handleError(loggerMessage, err)
+    });
   }
 
   private handleError(result: LoggerMessage, error) {

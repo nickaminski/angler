@@ -12,7 +12,7 @@ import { UserService } from '../services/user.service';
 })
 export class SigninComponent implements OnInit, OnDestroy {
 
-  constructor(private userService: UserService, private chatService: ChatService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   username: string = '';
   error: string;
@@ -54,6 +54,10 @@ export class SigninComponent implements OnInit, OnDestroy {
             {
               this.error = 'Bad credentials';
             }
+          }
+          else
+          {
+            console.log(err);
           }
         }
       });
