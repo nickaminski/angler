@@ -15,12 +15,12 @@
 }
 
 .chat-icon {
+    display: flex;
+    margin: 0 5px;
+
     > img {
         border-radius: 50%;
     }
-
-    display: flex;
-    margin: 0 5px;
 }
 
 .chat-record {

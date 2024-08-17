@@ -13,6 +13,8 @@
 }
 
 .search-input  {
+    margin: 0 3px;
+
     > input {
         border: none;
         color: inherit;
@@ -26,8 +28,6 @@
     > input:focus {
         outline: none;
     }
-
-    margin: 0 3px;
 }
 
 .icon {

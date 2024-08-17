@@ -10,28 +10,20 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ChatMessageComponent } from './chat/chat-message/chat-message.component';
 import { SearchComponent } from './search/search.component';
 import { CreateUserComponent } from './create-user/create-user.component';
-import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withJsonpSupport } from '@angular/common/http';
 import { SigninComponent } from './signin/signin.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ChatComponent,
-    PageNotFoundComponent,
-    NavbarComponent,
-    ChatMessageComponent,
-    SearchComponent,
-    CreateUserComponent,
-    SigninComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    HttpClientJsonpModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        ChatComponent,
+        PageNotFoundComponent,
+        NavbarComponent,
+        ChatMessageComponent,
+        SearchComponent,
+        CreateUserComponent,
+        SigninComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule], providers: [provideHttpClient(withInterceptorsFromDi(), withJsonpSupport())] })
 export class AppModule { }
